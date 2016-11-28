@@ -3,6 +3,7 @@ import DataService from './DataService';
 import WeatherUnit from './WeatherUnit';
 import NewsUnit from './NewsUnit';
 import MarketUnit from './MarketUnit';
+import TransitUnit from './TransitUnit';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -21,6 +22,8 @@ class ConsoleApp extends React.Component {
         <NewsUnit />
         <br />
         <MarketUnit />
+        <br />
+        <TransitUnit />
       </div>
     )
   }

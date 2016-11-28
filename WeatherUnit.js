@@ -42,6 +42,19 @@ class WeatherUnit extends React.Component {
       //   },
       //   success: function() { console.log('%cSuccess!' + authHeader, 'font-size:25px;color:pink;'); }
       // });
+
+      // $.ajax({
+      //   url: 'https://api.trakt.tv/users/edwardmolasses/collection/shows',
+      //   type: "GET",
+      //   crossDomain: true,
+      //   headers: {'Content-Type' : 'application/json',
+      //             'trakt-api-version' : '2',
+      //             'trakt-api-key' : 'd54dfb418cd840befecd83ff1fa27f49fd53925de9ef4e8bf021d47463f3971f'
+      //   },
+      //   success: function() { console.log('%cSuccess!' + authHeader, 'font-size:25px;color:pink;'); }
+      // }).done(function(msg) {
+      //   console.log('finished!: '+ msg );
+      // });
     }
 
     componentDidMount() {
