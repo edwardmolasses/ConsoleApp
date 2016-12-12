@@ -26,25 +26,20 @@ class MarketUnit extends React.Component {
     }
 
     render() {
-
-      {this.state.stocksData.map(function(stock, i) {
-        return (
-          <h4 key={i}>
-            {stock.symbol} <span className="fa fa-arrow-right"></span> <strong className={stock.Change > 0 ? "stock-up" : "stock-down"}>{stock.Ask}</strong>
-          </h4>
-        );
-      })}
-
       var stocksData = this.state.stocksData.map(function(stock, i) {
         return (
           <h4 key={i}>
-            {stock.symbol} <span className="fa fa-arrow-right"></span> <strong className={stock.Change > 0 ? "stock-up" : "stock-down"}>{stock.Ask}</strong>
+            <span className="text-glow">{stock.symbol}</span>
+            <i className="material-icons fs14 text-glow">play_arrow</i> <strong className={stock.Change > 0 ? "stock-up text-glow-green" : "stock-down text-glow-red"}>{stock.Ask}</strong>
           </h4>
         );
       });
       return (
         <div>
-          <h2><i className="fa fa-money"></i> <span className="h5">last updated {this.state.lastUpdated}</span></h2>
+          <h2 className="mb25 text-glow">
+            <i className="material-icons fs30 dn4">trending_up</i> MARKETS
+            <div className="h5">last updated {this.state.lastUpdated}</div>
+          </h2>
           {stocksData}
         </div>
       )

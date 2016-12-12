@@ -35,6 +35,28 @@ class WeatherUnit extends React.Component {
         this.setState({ weatherTomorrowData: data.list[1].weather[0].description });
         this.setState({ lastUpdated: DataService.getDateTimeNow() });
       });
+      // $.ajax({
+      //   url: 'https://api.trakt.tv/users/edwardmolasses/collection/shows',
+      //   type: "GET",
+      //   headers: { 'Content-Type'     : 'application/json',
+      //              'trakt-api-version': '2',
+      //              'trakt-api-key'    : 'd54dfb418cd840befecd83ff1fa27f49fd53925de9ef4e8bf021d47463f3971f'
+      //   },
+      //   success: function() { console.log('%cSuccess!' + authHeader, 'font-size:25px;color:pink;'); }
+      // });
+
+      // $.ajax({
+      //   url: 'https://api.trakt.tv/users/edwardmolasses/collection/shows',
+      //   type: "GET",
+      //   crossDomain: true,
+      //   headers: {'Content-Type' : 'application/json',
+      //             'trakt-api-version' : '2',
+      //             'trakt-api-key' : 'd54dfb418cd840befecd83ff1fa27f49fd53925de9ef4e8bf021d47463f3971f'
+      //   },
+      //   success: function() { console.log('%cSuccess!' + authHeader, 'font-size:25px;color:pink;'); }
+      // }).done(function(msg) {
+      //   console.log('finished!: '+ msg );
+      // });
     }
 
     componentDidMount() {
@@ -47,14 +69,11 @@ class WeatherUnit extends React.Component {
     render() {
       return (
         <div>
-          <h2 className="text-glow">
-            <i className="material-icons fs30 dn4">streetview</i> WEATHER
-            <div className="h5">last updated {this.state.lastUpdated}</div>
-          </h2>
-          <h3 className="team-title text-glow">
+          <h2><i className="material-icons fs30">looks</i> <span className="h5">last updated {this.state.lastUpdated}</span></h2>
+          <h3 className="team-title">
             The weather today is {this.state.weatherTodayData}! <i className="material-icons md-36">{this.getWeatherIcon(this.state.weatherTodayData)}</i>
           </h3>
-          <h3 className="team-title text-glow">
+          <h3 className="team-title">
             The weather tomorrow will be {this.state.weatherTomorrowData}! <i className="material-icons md-36">{this.getWeatherIcon(this.state.weatherTomorrowData)}</i>
           </h3>
         </div>

@@ -27,15 +27,18 @@ class NewsUnit extends React.Component {
 
     render() {
       var newsStories = this.state.newsStories.map(function(story, i) {
-            return (
-              <h4 key={i} className="truncate">
-              <a href={'https://www.reddit.com/' + story.data.permalink} target="_blank">{story.data.title}</a>
-              </h4>
-            );
+        return (
+          <h4 key={i} className="truncate text-glow">
+          <a href={'https://www.reddit.com/' + story.data.permalink} target="_blank">{story.data.title}</a>
+          </h4>
+        );
       });
       return (
         <div>
-          <h2><i className="fa fa-globe"></i> <span className="h5">last updated {this.state.lastUpdated}</span></h2>
+          <h2 className="text-glow mb25">
+            <i className="material-icons fs30 dn4">language</i> NEWS
+            <div className="h5">last updated {this.state.lastUpdated}</div>
+          </h2>
           {newsStories}
         </div>
       )

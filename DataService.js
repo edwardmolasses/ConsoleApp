@@ -12,13 +12,18 @@ class DataService {
     return dd + '/' + mm + '/' + yyyy;
   }
 
-  static getTimeNow() {
-    var now = new Date();
-    var h = now.getHours() > 12 ? now.getHours() - 12 : now.getHours();
-    var m = ('0' + now.getMinutes()).slice(-2);
-    var period = now.getHours() > 12 ? 'pm' : 'am';
+  static getTimeNow24() {
+    return this.getTimeNow(true);
+  }
 
-    return h + ':' + m + ' ' + period;
+  static getTimeNow(military) {
+    var military = typeof military !== 'undefined' && military  ? true : false;
+    var now = new Date();
+    var h = now.getHours() > 12 && !military ? now.getHours() - 12 : now.getHours();
+    var m = ('0' + now.getMinutes()).slice(-2);
+    var period = military ? '' : (now.getHours() > 12 ? ' pm' : ' am');
+
+    return h + ':' + m + period;
   }
 
   static getWeatherIcon() {
