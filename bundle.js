@@ -105,17 +105,17 @@
 	      return _react2.default.createElement(
 	        'div',
 	        null,
+	        _react2.default.createElement(_NewsUnit2.default, null),
+	        _react2.default.createElement('br', null),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'flex-di flex-row flex-jl' },
 	          _react2.default.createElement(_MarketUnit2.default, null),
 	          _react2.default.createElement('div', { className: 'mr90' }),
-	          _react2.default.createElement(_WeatherUnit2.default, null),
+	          _react2.default.createElement(_TransitUnit2.default, null),
 	          _react2.default.createElement('div', { className: 'mr90' }),
-	          _react2.default.createElement(_TransitUnit2.default, null)
-	        ),
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement(_NewsUnit2.default, null)
+	          _react2.default.createElement(_WeatherUnit2.default, null)
+	        )
 	      );
 	    }
 	  }]);

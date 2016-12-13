@@ -17,15 +17,15 @@ class ConsoleApp extends React.Component {
   render() {
     return (
       <div>
+        <NewsUnit />
+        <br />
         <div className="flex-di flex-row flex-jl">
           <MarketUnit />
           <div className="mr90"></div>
-          <WeatherUnit />
-          <div className="mr90"></div>
           <TransitUnit />
+          <div className="mr90"></div>
+          <WeatherUnit />
         </div>
-        <br />
-        <NewsUnit />
       </div>
     )
   }
