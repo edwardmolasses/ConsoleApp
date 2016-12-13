@@ -108,14 +108,14 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'flex-di flex-row flex-jl' },
+	          _react2.default.createElement(_MarketUnit2.default, null),
+	          _react2.default.createElement('div', { className: 'mr90' }),
 	          _react2.default.createElement(_WeatherUnit2.default, null),
 	          _react2.default.createElement('div', { className: 'mr90' }),
 	          _react2.default.createElement(_TransitUnit2.default, null)
 	        ),
 	        _react2.default.createElement('br', null),
-	        _react2.default.createElement(_NewsUnit2.default, null),
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement(_MarketUnit2.default, null)
+	        _react2.default.createElement(_NewsUnit2.default, null)
 	      );
 	    }
 	  }]);
@@ -4947,7 +4947,7 @@
 	          { className: 'flex-di flex-row flex-jl' },
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'transit-number-container h70 w50 glow-box glow-box-inside mr15 mb15' },
+	            { className: 'transit-number-container h70 w50 glow-box mr15 mb15' },
 	            _react2.default.createElement(
 	              'div',
 	              { className: 'transit-number-container-label h20 glow-black' },
@@ -4961,7 +4961,7 @@
 	          ),
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'transit-number-container h70 w170 glow-box glow-box-inside mr15' },
+	            { className: 'transit-number-container h70 w170 glow-box mr15' },
 	            _react2.default.createElement(
 	              'div',
 	              { className: 'transit-number-container-label h20 glow-black' },
@@ -4975,7 +4975,7 @@
 	          ),
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'transit-number-container h70 w170 glow-box glow-box-inside' },
+	            { className: 'transit-number-container h70 w170 glow-box' },
 	            _react2.default.createElement(
 	              'div',
 	              { className: 'transit-number-container-label h20 glow-black' },
@@ -4994,7 +4994,7 @@
 	          { className: 'flex-di flex-row flex-jl' },
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'transit-number-container h70 w50 glow-box glow-box-inside mr15' },
+	            { className: 'transit-number-container h70 w50 glow-box mr15' },
 	            _react2.default.createElement(
 	              'div',
 	              { className: 'transit-number-container-label h20 glow-black' },
@@ -5008,7 +5008,7 @@
 	          ),
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'transit-number-container h70 w170 glow-box glow-box-inside mr15' },
+	            { className: 'transit-number-container h70 w170 glow-box mr15' },
 	            _react2.default.createElement(
 	              'div',
 	              { className: 'transit-number-container-label h20 glow-black' },
@@ -5022,7 +5022,7 @@
 	          ),
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'transit-number-container h70 w170 glow-box glow-box-inside' },
+	            { className: 'transit-number-container h70 w170 glow-box' },
 	            _react2.default.createElement(
 	              'div',
 	              { className: 'transit-number-container-label h20 glow-black' },
