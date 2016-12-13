@@ -26,8 +26,8 @@ export const API_CITY_ID = "6173331";
 export const MINUTE = 60 * 1000;
 export const HOUR = 60 * MINUTE;
 
-export const TRAVEL_TIME_TO_NO9 = 7 * 60 * 1000;// in ms
-export const TRAVEL_TIME_TO_NO17 = 9 * 60 * 1000;// in ms
+export const TRAVEL_TIME_TO_NO9 = 5 * 60 * 1000;// in ms
+export const TRAVEL_TIME_TO_NO17 = 6 * 60 * 1000;// in ms
 export const NO9_BUS_SCHEDULE = [
   '00:09',
   '00:23',

@@ -29,16 +29,16 @@ class MarketUnit extends React.Component {
       var stocksData = this.state.stocksData.map(function(stock, i) {
         return (
           <h4 key={i}>
-            <span className="text-glow">{stock.symbol}</span>
-            <i className="material-icons fs14 text-glow">play_arrow</i> <strong className={stock.Change > 0 ? "stock-up text-glow-green" : "stock-down text-glow-red"}>{stock.Ask}</strong>
+            <span className="glow">{stock.symbol}</span>
+            <i className="material-icons fs14 glow">play_arrow</i> <strong className={stock.Change > 0 ? "stock-up glow-green" : "stock-down glow-red"}>{stock.Ask}</strong>
           </h4>
         );
       });
       return (
         <div>
-          <h2 className="mb25 text-glow">
+          <h2 className="mb25 glow">
             <i className="material-icons fs30 dn4">trending_up</i> MARKETS
-            <div className="h5">last updated {this.state.lastUpdated}</div>
+            <div className="h5">LAST UPDATED {this.state.lastUpdated}</div>
           </h2>
           {stocksData}
         </div>

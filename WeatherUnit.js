@@ -47,14 +47,14 @@ class WeatherUnit extends React.Component {
     render() {
       return (
         <div>
-          <h2 className="text-glow">
+          <h2 className="glow">
             <i className="material-icons fs30 dn4">streetview</i> WEATHER
-            <div className="h5">last updated {this.state.lastUpdated}</div>
+            <div className="h5">LAST UPDATED {this.state.lastUpdated}</div>
           </h2>
-          <h3 className="team-title text-glow">
+          <h3 className="team-title glow">
             The weather today is {this.state.weatherTodayData}! <i className="material-icons md-36">{this.getWeatherIcon(this.state.weatherTodayData)}</i>
           </h3>
-          <h3 className="team-title text-glow">
+          <h3 className="team-title glow">
             The weather tomorrow will be {this.state.weatherTomorrowData}! <i className="material-icons md-36">{this.getWeatherIcon(this.state.weatherTomorrowData)}</i>
           </h3>
         </div>

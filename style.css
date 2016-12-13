@@ -1,6 +1,6 @@
-a { color: #8decf3; }
+a, a:focus { color: #8decf3; }
 a, a:hover, a:focus { text-decoration: none !important; }
-a:hover, a:focus { color: #50b5bc !important; }
+a:hover { color: #50b5bc !important; }
 
 body {
   color: #8decf3;
@@ -10,8 +10,14 @@ body {
 
 /* atoms */
 .mr90 { margin-right: 90px !important; }
+.mr15 { margin-right: 15px !important; }
+.mb15 { margin-bottom: 15px !important; }
 .mb25 { margin-bottom: 25px !important; }
-.w80 { width: 80% !important; }
+.h20 { height: 20px !important; }
+.h70 { height: 70px !important; }
+.w50 { width: 50px !important; }
+.w170 { width: 170px !important; }
+.w80p { width: 80% !important; }
 .fs14 { font-size: 14px !important; }
 .fs30 { font-size: 30px !important; }
 .tal { text-align: left !important; }
@@ -32,16 +38,59 @@ body {
 .orange1 { color: #c9a93f !important; }
 .yellow1 { color: #b6ca34 !important; }
 
+/* transit */
+.transit-number-container {
+  position: relative;
+  border: 3px solid #8decf3;
+}
+
+  .transit-number-container-label {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    font-weight: 600;
+    background-color: #8decf3;
+    color: #131e1f;
+  }
+
+  .transit-number-container-bus {
+    position: absolute;
+    width: 100%;
+    top: 25px;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    color: #8decf3;
+  }
+
 /* typography */
 
-.text-glow {
+.list-disc {
+  list-style: square outside none !important;
+  list-style-type: square;
+  list-style-position: outside;
+}
+
+/*li:before {content: "\2022";}*/
+
+.glow {
   text-shadow: 0 0 1px #50b5bc, 0 0 1px #50b5bc, 0 0 1px #50b5bc
 }
-.text-glow-green {
+.glow-box {
+  /*box-shadow: 1px 1px 1px #50b5bc;*/
+  box-shadow: 0 1px 1px 0 #50b5bc, 0 1px 1px 0 #50b5bc;
+}
+.glow-box-inside {
+  box-shadow: inset 0 0 1px #50b5bc;
+}
+.glow-green {
   text-shadow: 0 0 1px #33953f, 0 0 1px #33953f, 0 0 1px #33953f
 }
-.text-glow-red {
+.glow-red {
   text-shadow: 0 0 1px #802b38, 0 0 1px #802b38, 0 0 1px #802b38
+}
+.glow-black {
+  text-shadow: 0 0 1px #398187, 0 0 1px #398187, 0 0 1px #398187
 }
 
 .h5 {
@@ -49,7 +98,7 @@ body {
 }
 
 .truncate {
-  width: 1000px;
+  width: 1200px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -166,11 +215,11 @@ body {
   pointer-events: none;
 }
 
-.container::after {
+/*.container::after {
   animation: flicker 0.15s infinite;
-}
+}*/
 
-@keyframes turn-on {
+/*@keyframes turn-on {
   0% {
     transform: scale(1, 0.8) translate3d(0, 0, 0);
     -webkit-filter: brightness(30);
@@ -202,8 +251,8 @@ body {
     filter: contrast(1) brightness(1.2) saturate(1.3);
     opacity: 1;
   }
-}
-@keyframes turn-off {
+}*/
+/*@keyframes turn-off {
   0% {
     transform: scale(1, 1.3) translate3d(0, 0, 0);
     -webkit-filter: brightness(1);
@@ -221,14 +270,14 @@ body {
     -webkit-filter: brightness(50);
     filter: brightness(50);
   }
-}
+}*/
 .screen {
   width: 100%;
   height: 100%;
   border: none;
 }
 
-.container > .screen {
+/*.container > .screen {
   animation: turn-on 4s linear;
   animation-fill-mode: forwards;
-}
+}*/
