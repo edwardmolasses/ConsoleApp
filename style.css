@@ -9,6 +9,8 @@ body {
 }
 
 /* atoms */
+.t25 { top: 25px !important; }
+.t29 { top: 29px !important; }
 .mr90 { margin-right: 90px !important; }
 .mr15 { margin-right: 15px !important; }
 .mb15 { margin-bottom: 15px !important; }
@@ -18,7 +20,9 @@ body {
 .w50 { width: 50px !important; }
 .w170 { width: 170px !important; }
 .w80p { width: 80% !important; }
+.fwb { font-weight: bold !important; }
 .fs14 { font-size: 14px !important; }
+.fs22 { font-size: 22px !important; }
 .fs30 { font-size: 30px !important; }
 .tal { text-align: left !important; }
 .center { margin: 0 auto !important; }
@@ -56,9 +60,6 @@ body {
   .transit-number-container-bus {
     position: absolute;
     width: 100%;
-    top: 25px;
-    font-size: 30px;
-    font-weight: bold;
     text-align: center;
     color: #8decf3;
   }

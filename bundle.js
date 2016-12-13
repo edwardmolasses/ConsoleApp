@@ -4955,7 +4955,7 @@
 	            ),
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'transit-number-container-bus glow' },
+	              { className: 'transit-number-container-bus t25 fs30 fwb glow' },
 	              '9'
 	            )
 	          ),
@@ -4969,7 +4969,7 @@
 	            ),
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'transit-number-container-bus glow' },
+	              { className: 'transit-number-container-bus t29 fs22 glow' },
 	              this.state.nextNo9
 	            )
 	          ),
@@ -4983,7 +4983,7 @@
 	            ),
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'transit-number-container-bus glow' },
+	              { className: 'transit-number-container-bus t29 fs22 glow' },
 	              this.state.tillNextNo9,
 	              ' mins'
 	            )
@@ -5002,7 +5002,7 @@
 	            ),
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'transit-number-container-bus glow' },
+	              { className: 'transit-number-container-bus t25 fs30 fwb glow' },
 	              '17'
 	            )
 	          ),
@@ -5016,7 +5016,7 @@
 	            ),
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'transit-number-container-bus glow' },
+	              { className: 'transit-number-container-bus t29 fs22 glow' },
 	              this.state.nextNo17
 	            )
 	          ),
@@ -5030,7 +5030,7 @@
 	            ),
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'transit-number-container-bus glow' },
+	              { className: 'transit-number-container-bus t29 fs22 glow' },
 	              this.state.tillNextNo17,
 	              ' mins'
 	            )

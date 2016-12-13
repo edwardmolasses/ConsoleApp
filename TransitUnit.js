@@ -61,29 +61,29 @@ class TransitUnit extends React.Component {
           <div className="flex-di flex-row flex-jl">
             <div className="transit-number-container h70 w50 glow-box glow-box-inside mr15 mb15">
               <div className="transit-number-container-label h20 glow-black">BUS</div>
-              <div className="transit-number-container-bus glow">9</div>
+              <div className="transit-number-container-bus t25 fs30 fwb glow">9</div>
             </div>
             <div className="transit-number-container h70 w170 glow-box glow-box-inside mr15">
               <div className="transit-number-container-label h20 glow-black">NEXT @</div>
-              <div className="transit-number-container-bus glow">{this.state.nextNo9}</div>
+              <div className="transit-number-container-bus t29 fs22 glow">{this.state.nextNo9}</div>
             </div>
             <div className="transit-number-container h70 w170 glow-box glow-box-inside">
               <div className="transit-number-container-label h20 glow-black">IN</div>
-              <div className="transit-number-container-bus glow">{this.state.tillNextNo9} mins</div>
+              <div className="transit-number-container-bus t29 fs22 glow">{this.state.tillNextNo9} mins</div>
             </div>
           </div>
           <div className="flex-di flex-row flex-jl">
             <div className="transit-number-container h70 w50 glow-box glow-box-inside mr15">
               <div className="transit-number-container-label h20 glow-black">BUS</div>
-              <div className="transit-number-container-bus glow">17</div>
+              <div className="transit-number-container-bus t25 fs30 fwb glow">17</div>
             </div>
             <div className="transit-number-container h70 w170 glow-box glow-box-inside mr15">
               <div className="transit-number-container-label h20 glow-black">NEXT @</div>
-              <div className="transit-number-container-bus glow">{this.state.nextNo17}</div>
+              <div className="transit-number-container-bus t29 fs22 glow">{this.state.nextNo17}</div>
             </div>
             <div className="transit-number-container h70 w170 glow-box glow-box-inside">
               <div className="transit-number-container-label h20 glow-black">IN</div>
-              <div className="transit-number-container-bus glow">{this.state.tillNextNo17} mins</div>
+              <div className="transit-number-container-bus t29 fs22 glow">{this.state.tillNextNo17} mins</div>
             </div>
           </div>
         </div>
