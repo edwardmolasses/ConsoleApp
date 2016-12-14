@@ -30,11 +30,13 @@ class WeatherUnit extends React.Component {
     }
 
     getWeatherFromServer() {
-      $.get(CONSTANTS.API_ROOT_WEATHER + CONSTANTS.API_URI_WEATHER_3HOUR + '?id=' + CONSTANTS.API_CITY_ID + '&APPID=' + CONSTANTS.API_KEY_WEATHER, data => {
-        this.setState({ weatherTodayData: data.list[0].weather[0].description });
-        this.setState({ weatherTomorrowData: data.list[1].weather[0].description });
-        this.setState({ lastUpdated: DataService.getDateTimeNow() });
-      });
+      $.ajax({url: CONSTANTS.API_ROOT_YAHOO_WEATHER,
+              success: json_weather => {
+          this.setState({ weatherTodayData: json_weather.query.results.channel.item.condition.text.toLowerCase() });
+          this.setState({ weatherTomorrowData: json_weather.query.results.channel.item.forecast[1].text.toLowerCase() });
+          this.setState({ lastUpdated: DataService.getDateTimeNow() });
+        }
+      })
     }
 
     componentDidMount() {

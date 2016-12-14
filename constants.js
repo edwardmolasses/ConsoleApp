@@ -17,8 +17,11 @@ export const API_STOCKS = "http://query.yahooapis.com/v1/public/yql?q=select%20"
 export const API_TRANSIT_KEY = "oT7nF3oh4EUVqrLkjUuB";
 export let API_TRANSIT_URI = "http://api.translink.ca/rttiapi/v1/stops/%s/estimates?apikey=" + API_TRANSIT_KEY;
 export const API_TRANSIT_STOP17_URI = API_TRANSIT_URI.replace('%s', API_TRANSIT_STOP17);
-export const API_ROOT_WEATHER = "http://api.openweathermap.org/data/2.5";
 export const API_NEWS = "https://www.reddit.com/r/worldnews/top.json?sort=top&t=day";
+export const API_ROOT_WEATHER = "http://api.openweathermap.org/data/2.5";
+export const API_ROOT_YAHOO_WEATHER = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast"+
+                                      "%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D" +
+                                      "%22vancouver%2C%20bc%22)%20%20and%20u%3D'c'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
 export const API_URI_WEATHER_3HOUR = "/forecast/city";
 export const API_URI_WEATHER_DAILY = "/forecast/daily";
 export const API_KEY_WEATHER = "f1a40122b90a9c556413c1719aff2c6d";
@@ -26,8 +29,8 @@ export const API_CITY_ID = "6173331";
 export const MINUTE = 60 * 1000;
 export const HOUR = 60 * MINUTE;
 
-export const TRAVEL_TIME_TO_NO9 = 5 * 60 * 1000;// in ms
-export const TRAVEL_TIME_TO_NO17 = 6 * 60 * 1000;// in ms
+export const TRAVEL_TIME_TO_NO9 = 4 * 60 * 1000;// in ms
+export const TRAVEL_TIME_TO_NO17 = 5 * 60 * 1000;// in ms
 export const NO9_BUS_SCHEDULE = [
   '00:09',
   '00:23',

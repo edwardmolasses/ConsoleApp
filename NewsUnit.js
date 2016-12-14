@@ -28,9 +28,9 @@ class NewsUnit extends React.Component {
     render() {
       var newsStories = this.state.newsStories.map(function(story, i) {
         return (
-          <h4 key={i} className="truncate glow">
-          <a href={'https://www.reddit.com/' + story.data.permalink} target="_blank">{story.data.title}</a>
-          </h4>
+          <li key={i} className="truncate glow fs18">
+            <a href={'https://www.reddit.com/' + story.data.permalink} target="_blank">{story.data.title}</a>
+          </li>
         );
       });
       return (
@@ -39,7 +39,9 @@ class NewsUnit extends React.Component {
             <i className="material-icons fs30 dn4">language</i> NEWS
             <div className="h5">LAST UPDATED {this.state.lastUpdated}</div>
           </h2>
-          {newsStories}
+          <ul>
+            {newsStories}
+          </ul>
         </div>
       )
     }

@@ -23,6 +23,7 @@ body {
 .w80p { width: 80% !important; }
 .fwb { font-weight: bold !important; }
 .fs14 { font-size: 14px !important; }
+.fs18 { font-size: 18px !important; }
 .fs22 { font-size: 22px !important; }
 .fs30 { font-size: 30px !important; }
 .tal { text-align: left !important; }
@@ -74,7 +75,24 @@ body {
   list-style-position: outside;
 }
 
-/*li:before {content: "\2022";}*/
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+  li {
+    padding-left: 1em;
+    text-indent: -.7em;
+  }
+
+  li a {
+    padding-left: 5px;
+  }
+
+  li:before {
+    content: "\2022";
+  }
 
 .glow {
   text-shadow: 0 0 1px #50b5bc, 0 0 1px #50b5bc, 0 0 1px #50b5bc
@@ -101,7 +119,7 @@ body {
 }
 
 .truncate {
-  width: 1200px;
+  width: 1300px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
