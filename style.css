@@ -9,16 +9,21 @@ body {
 }
 
 /* atoms */
+.tac { text-align: center !important; }
+.tal { text-align: left !important; }
+.tar { text-align: right !important; }
 .t25 { top: 25px !important; }
 .t29 { top: 29px !important; }
 .mr90 { margin-right: 90px !important; }
 .mr15 { margin-right: 15px !important; }
+.mb10 { margin-bottom: 10px !important; }
 .mb15 { margin-bottom: 15px !important; }
 .mb25 { margin-bottom: 25px !important; }
 .pt130 { padding-top: 130px !important; }
 .h20 { height: 20px !important; }
 .h70 { height: 70px !important; }
 .w50 { width: 50px !important; }
+.w60 { width: 60px !important; }
 .w170 { width: 170px !important; }
 .w80p { width: 80% !important; }
 .fwb { font-weight: bold !important; }
@@ -26,13 +31,16 @@ body {
 .fs18 { font-size: 18px !important; }
 .fs22 { font-size: 22px !important; }
 .fs30 { font-size: 30px !important; }
+.fs35 { font-size: 35px !important; }
 .tal { text-align: left !important; }
 .center { margin: 0 auto !important; }
 .flex-di { display: flex !important; }
 .flex-row { flex-direction: row !important; }
 .flex-jc { justify-content: center !important; }
+.flex-jsp { justify-content: space-between !important; }
 .flex-jl { justify-content: left !important; }
 
+.up3 { transform: translateY(-3px); }
 .dn4 { transform: translateY(4px); }
 
 .black1 { color: #131e1f !important; }

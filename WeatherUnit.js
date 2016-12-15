@@ -6,8 +6,8 @@ class WeatherUnit extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        weatherTodayData: [],
-        weatherTomorrowData: [],
+        forecastToday: [],
+        forecastOtherDays: [],
         lastUpdated: ''
       };
     }
@@ -32,9 +32,14 @@ class WeatherUnit extends React.Component {
     getWeatherFromServer() {
       $.ajax({url: CONSTANTS.API_ROOT_YAHOO_WEATHER,
               success: json_weather => {
-          this.setState({ weatherTodayData: json_weather.query.results.channel.item.condition.text.toLowerCase() });
-          this.setState({ weatherTomorrowData: json_weather.query.results.channel.item.forecast[1].text.toLowerCase() });
+          var todayForecast = json_weather.query.results.channel.item.forecast.shift();
+
+          todayForecast.text = todayForecast.text.toUpperCase().split(' ');
+          this.setState({ forecastToday: todayForecast });
+console.log(this.state.forecastToday.text);
+          this.setState({ forecastOtherDays: json_weather.query.results.channel.item.forecast });
           this.setState({ lastUpdated: DataService.getDateTimeNow() });
+          console.log(json_weather.query.results.channel.item.forecast);
         }
       })
     }
@@ -47,20 +52,47 @@ class WeatherUnit extends React.Component {
     }
 
     render() {
-      return (
-        <div>
-          <h2 className="glow">
-            <i className="material-icons fs30 dn4">streetview</i> WEATHER
-            <div className="h5">LAST UPDATED {this.state.lastUpdated}</div>
-          </h2>
-          <h3 className="team-title glow">
-            The weather today is {this.state.weatherTodayData}! <i className="material-icons md-36">{this.getWeatherIcon(this.state.weatherTodayData)}</i>
-          </h3>
-          <h3 className="team-title glow">
-            The weather tomorrow will be {this.state.weatherTomorrowData}! <i className="material-icons md-36">{this.getWeatherIcon(this.state.weatherTomorrowData)}</i>
-          </h3>
-        </div>
-      )
+        var forecastOtherDaysList = this.state.forecastOtherDays.map(function(dayForecast, i) {
+            return (
+                <span key={i} className="glow mr15 fs35">
+                    <div className="tac mb10"><i className={"wi wi-yahoo-" + dayForecast.code}></i></div>
+                    <div className="fs14 tac">{dayForecast.day.toUpperCase()}</div>
+                </span>
+            );
+        });
+        //var forecastTodayText = this.state.forecastToday.text.map(function(dayForecastText, i) {
+        //    return (
+        //        <div key={i}>{dayForecastText}</div>
+        //    )
+        //});
+        return (
+            <div>
+                <h2 className="glow mb25">
+                    <i className="material-icons fs30 dn4">streetview</i> WEATHER
+                    <div className="h5">LAST UPDATED {this.state.lastUpdated}</div>
+                </h2>
+                <h4 className="team-title glow mb15">Today</h4>
+                <div className="flex-di flex-row flex-jl">
+                    <div className="tal fs35 mb15 mr15">
+                        <div className="tac mb10"><i className={"wi wi-yahoo-" + this.state.forecastToday.code}></i></div>
+                    </div>
+                    <span className="w60 up3">
+                        <div className="flex-di flex-row flex-jsp fs14">
+                            <span>HI</span>
+                            <span>{this.state.forecastToday.high} &deg;C</span>
+                        </div>
+                        <div className="flex-di flex-row flex-jsp fs14">
+                            <span>LO</span>
+                            <span>{this.state.forecastToday.low} &deg;C</span>
+                        </div>
+                    </span>
+                </div>
+                <h4 className="team-title glow mb15">Nine Day Forecast</h4>
+                <div className="flex-di flex-row flex-jl">
+                    {forecastOtherDaysList}
+                </div>
+            </div>
+        )
     }
 }
 
