@@ -8138,7 +8138,7 @@
 	                        { className: 'tal fs35 mb15 mr15' },
 	                        _react2.default.createElement(
 	                            'div',
-	                            { className: 'tac mb10' },
+	                            { className: 'tac mb10 glow' },
 	                            _react2.default.createElement('i', { className: "wi wi-yahoo-" + this.state.forecastToday.code })
 	                        )
 	                    ),
@@ -8147,7 +8147,7 @@
 	                        { className: 'w60 up3' },
 	                        _react2.default.createElement(
 	                            'div',
-	                            { className: 'flex-di flex-row flex-jsp fs14' },
+	                            { className: 'flex-di flex-row flex-jsp fs14 glow' },
 	                            _react2.default.createElement(
 	                                'span',
 	                                null,
@@ -8162,7 +8162,7 @@
 	                        ),
 	                        _react2.default.createElement(
 	                            'div',
-	                            { className: 'flex-di flex-row flex-jsp fs14' },
+	                            { className: 'flex-di flex-row flex-jsp fs14 glow' },
 	                            _react2.default.createElement(
 	                                'span',
 	                                null,
@@ -8180,7 +8180,7 @@
 	                _react2.default.createElement(
 	                    'h4',
 	                    { className: 'team-title glow mb15' },
-	                    'Nine Day Forecast'
+	                    'Forecast'
 	                ),
 	                _react2.default.createElement(
 	                    'div',
@@ -12583,7 +12583,7 @@
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'flex-di flex-row flex-jl' },
+	          { className: 'flex-di flex-row flex-jl mt25' },
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'transit-number-container h70 w50 glow-box mr15 mb15' },

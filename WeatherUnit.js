@@ -74,20 +74,20 @@ console.log(this.state.forecastToday.text);
                 <h4 className="team-title glow mb15">Today</h4>
                 <div className="flex-di flex-row flex-jl">
                     <div className="tal fs35 mb15 mr15">
-                        <div className="tac mb10"><i className={"wi wi-yahoo-" + this.state.forecastToday.code}></i></div>
+                        <div className="tac mb10 glow"><i className={"wi wi-yahoo-" + this.state.forecastToday.code}></i></div>
                     </div>
                     <span className="w60 up3">
-                        <div className="flex-di flex-row flex-jsp fs14">
+                        <div className="flex-di flex-row flex-jsp fs14 glow">
                             <span>HI</span>
                             <span>{this.state.forecastToday.high} &deg;C</span>
                         </div>
-                        <div className="flex-di flex-row flex-jsp fs14">
+                        <div className="flex-di flex-row flex-jsp fs14 glow">
                             <span>LO</span>
                             <span>{this.state.forecastToday.low} &deg;C</span>
                         </div>
                     </span>
                 </div>
-                <h4 className="team-title glow mb15">Nine Day Forecast</h4>
+                <h4 className="team-title glow mb15">Forecast</h4>
                 <div className="flex-di flex-row flex-jl">
                     {forecastOtherDaysList}
                 </div>

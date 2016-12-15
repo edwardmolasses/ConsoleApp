@@ -58,7 +58,7 @@ class TransitUnit extends React.Component {
             <i className="material-icons fs30 dn4">directions_bus</i> TRANSIT
             <div className="h5">LAST UPDATED {this.state.lastUpdated}</div>
           </h2>
-          <div className="flex-di flex-row flex-jl">
+          <div className="flex-di flex-row flex-jl mt25">
             <div className="transit-number-container h70 w50 glow-box mr15 mb15">
               <div className="transit-number-container-label h20 glow-black">BUS</div>
               <div className="transit-number-container-bus t25 fs30 fwb glow">9</div>
