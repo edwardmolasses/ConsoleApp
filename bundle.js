@@ -8045,16 +8045,6 @@
 	    }
 
 	    _createClass(WeatherUnit, [{
-	        key: 'getWeatherIcon',
-	        value: function getWeatherIcon(weatherMessage) {
-	            if (~weatherMessage.indexOf('rain')) return 'beach_access';
-	            if (~weatherMessage.indexOf('sun') || ~weatherMessage.indexOf('clear')) return 'wb_sunny';
-	            if (~weatherMessage.indexOf('cloud')) return 'filter_drama';
-	            if (~weatherMessage.indexOf('snow')) return 'ac_unit';
-	            if (~weatherMessage.indexOf('storm') || ~weatherMessage.indexOf('lightning') || ~weatherMessage.indexOf('thunder')) return 'flash_on';
-	            return null;
-	        }
-	    }, {
 	        key: 'getWeatherFromServer',
 	        value: function getWeatherFromServer() {
 	            var _this2 = this;
@@ -8065,10 +8055,8 @@
 
 	                    todayForecast.text = todayForecast.text.toUpperCase().split(' ');
 	                    _this2.setState({ forecastToday: todayForecast });
-	                    console.log(_this2.state.forecastToday.text);
 	                    _this2.setState({ forecastOtherDays: json_weather.query.results.channel.item.forecast });
 	                    _this2.setState({ lastUpdated: _DataService2.default.getDateTimeNow() });
-	                    console.log(json_weather.query.results.channel.item.forecast);
 	                }
 	            });
 	        }
@@ -8101,11 +8089,6 @@
 	                    )
 	                );
 	            });
-	            //var forecastTodayText = this.state.forecastToday.text.map(function(dayForecastText, i) {
-	            //    return (
-	            //        <div key={i}>{dayForecastText}</div>
-	            //    )
-	            //});
 	            return _react2.default.createElement(
 	                'div',
 	                null,
@@ -12206,6 +12189,7 @@
 	var API_TRANSIT_URI = exports.API_TRANSIT_URI = "http://api.translink.ca/rttiapi/v1/stops/%s/estimates?apikey=" + API_TRANSIT_KEY;
 	var API_TRANSIT_STOP17_URI = exports.API_TRANSIT_STOP17_URI = API_TRANSIT_URI.replace('%s', API_TRANSIT_STOP17);
 	var API_NEWS = exports.API_NEWS = "https://www.reddit.com/r/worldnews/top.json?sort=top&t=day";
+	var API_ROOT_REDDIT = exports.API_ROOT_REDDIT = "https://www.reddit.com/";
 	var API_ROOT_WEATHER = exports.API_ROOT_WEATHER = "http://api.openweathermap.org/data/2.5";
 	var API_ROOT_YAHOO_WEATHER = exports.API_ROOT_YAHOO_WEATHER = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast" + "%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D" + "%22vancouver%2C%20bc%22)%20%20and%20u%3D'c'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
 	var API_URI_WEATHER_3HOUR = exports.API_URI_WEATHER_3HOUR = "/forecast/city";
@@ -12294,13 +12278,45 @@
 	    key: 'render',
 	    value: function render() {
 	      var newsStories = this.state.newsStories.map(function (story, i) {
+	        var removeExcessTitle = function removeExcessTitle(str) {
+	          //let splitChars = ['|', ' - '];
+	          var splitChars = ['|'];
+	          var _iteratorNormalCompletion = true;
+	          var _didIteratorError = false;
+	          var _iteratorError = undefined;
+
+	          try {
+	            for (var _iterator = splitChars[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+	              var val = _step.value;
+
+	              str = str.substring(story.data.title.lastIndexOf(val) + 1);
+	              console.log(val);
+	              console.log(str);
+	            }
+	          } catch (err) {
+	            _didIteratorError = true;
+	            _iteratorError = err;
+	          } finally {
+	            try {
+	              if (!_iteratorNormalCompletion && _iterator.return) {
+	                _iterator.return();
+	              }
+	            } finally {
+	              if (_didIteratorError) {
+	                throw _iteratorError;
+	              }
+	            }
+	          }
+
+	          return str;
+	        };
 	        return _react2.default.createElement(
 	          'li',
-	          { key: i, className: 'truncate glow fs18' },
+	          { key: i, className: 'news-link truncate glow fs18 ml-5' },
 	          _react2.default.createElement(
 	            'a',
-	            { href: 'https://www.reddit.com/' + story.data.permalink, target: '_blank' },
-	            story.data.title
+	            { href: CONSTANTS.API_ROOT_REDDIT + story.data.permalink, target: '_blank' },
+	            removeExcessTitle(story.data.title)
 	          )
 	        );
 	      });
@@ -12420,15 +12436,19 @@
 	              stock.symbol
 	            ),
 	            _react2.default.createElement(
-	              'i',
-	              { className: 'material-icons fs14 glow' },
-	              'play_arrow'
-	            ),
-	            ' ',
-	            _react2.default.createElement(
-	              'strong',
-	              { className: stock.Change > 0 ? "stock-up glow-green" : "stock-down glow-red" },
-	              stock.LastTradePriceOnly
+	              'span',
+	              null,
+	              _react2.default.createElement(
+	                'i',
+	                { className: 'material-icons fs14 glow' },
+	                'play_arrow'
+	              ),
+	              ' ',
+	              _react2.default.createElement(
+	                'strong',
+	                { className: stock.Change > 0 ? "stock-up glow-green" : "stock-down glow-red" },
+	                stock.LastTradePriceOnly
+	              )
 	            )
 	          );
 	        }
@@ -12524,8 +12544,8 @@
 	    value: function getNextBus(busScheduleArr, travelTimeToStop) {
 	      var timeFormat = this.state.timeFormat;
 	      var timeNow = (0, _moment2.default)(_DataService2.default.getTimeNow24(), timeFormat);
-	      var busTime;
-	      var timeDifference;
+	      var busTime = void 0;
+	      var timeDifference = void 0;
 
 	      var nextBusIndex = busScheduleArr.findIndex(function (busTime) {
 	        busTime = (0, _moment2.default)(busTime, timeFormat);

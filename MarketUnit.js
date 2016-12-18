@@ -30,8 +30,8 @@ class MarketUnit extends React.Component {
         if (stock.symbol) {
           return (
             <h4 key={i}>
-            <span className="glow">{stock.symbol}</span>
-            <i className="material-icons fs14 glow">play_arrow</i> <strong className={stock.Change > 0 ? "stock-up glow-green" : "stock-down glow-red"}>{stock.LastTradePriceOnly}</strong>
+                <span className="glow">{stock.symbol}</span>
+                <span><i className="material-icons fs14 glow">play_arrow</i> <strong className={stock.Change > 0 ? "stock-up glow-green" : "stock-down glow-red"}>{stock.LastTradePriceOnly}</strong></span>
             </h4>
           );
         }

@@ -18,6 +18,7 @@ export const API_TRANSIT_KEY = "oT7nF3oh4EUVqrLkjUuB";
 export let API_TRANSIT_URI = "http://api.translink.ca/rttiapi/v1/stops/%s/estimates?apikey=" + API_TRANSIT_KEY;
 export const API_TRANSIT_STOP17_URI = API_TRANSIT_URI.replace('%s', API_TRANSIT_STOP17);
 export const API_NEWS = "https://www.reddit.com/r/worldnews/top.json?sort=top&t=day";
+export const API_ROOT_REDDIT = "https://www.reddit.com/";
 export const API_ROOT_WEATHER = "http://api.openweathermap.org/data/2.5";
 export const API_ROOT_YAHOO_WEATHER = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast"+
                                       "%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D" +

@@ -17,12 +17,12 @@ class TransitUnit extends React.Component {
     }
 
     getNextBus(busScheduleArr, travelTimeToStop) {
-      var timeFormat = this.state.timeFormat;
-      var timeNow = moment(DataService.getTimeNow24(), timeFormat);
-      var busTime;
-      var timeDifference;
+      let timeFormat = this.state.timeFormat;
+      let timeNow = moment(DataService.getTimeNow24(), timeFormat);
+      let busTime;
+      let timeDifference;
 
-      var nextBusIndex = busScheduleArr.findIndex(function(busTime) {
+      let nextBusIndex = busScheduleArr.findIndex(function(busTime) {
         busTime = moment(busTime, timeFormat);
         timeDifference = moment(busTime, timeFormat).diff(timeNow);
 
@@ -33,9 +33,9 @@ class TransitUnit extends React.Component {
     }
 
     getTransitFromServer() {
-      var nextNo9BusTime = moment(this.getNextBus(CONSTANTS.NO9_BUS_SCHEDULE, CONSTANTS.TRAVEL_TIME_TO_NO9), this.state.timeFormat);
-      var nextNo17BusTime = moment(this.getNextBus(CONSTANTS.NO17_BUS_SCHEDULE, CONSTANTS.TRAVEL_TIME_TO_NO17), this.state.timeFormat);
-      var timeNow = moment(DataService.getTimeNow24(), this.state.timeFormat);
+      let nextNo9BusTime = moment(this.getNextBus(CONSTANTS.NO9_BUS_SCHEDULE, CONSTANTS.TRAVEL_TIME_TO_NO9), this.state.timeFormat);
+      let nextNo17BusTime = moment(this.getNextBus(CONSTANTS.NO17_BUS_SCHEDULE, CONSTANTS.TRAVEL_TIME_TO_NO17), this.state.timeFormat);
+      let timeNow = moment(DataService.getTimeNow24(), this.state.timeFormat);
 
       this.setState({ nextNo9: moment(nextNo9BusTime).format(this.state.timeFormat) });
       this.setState({ nextNo17: moment(nextNo17BusTime).format(this.state.timeFormat) });

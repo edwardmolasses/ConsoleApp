@@ -12,34 +12,15 @@ class WeatherUnit extends React.Component {
       };
     }
 
-    getWeatherIcon(weatherMessage) {
-      if (~weatherMessage.indexOf('rain'))
-        return 'beach_access';
-      if (~weatherMessage.indexOf('sun') ||
-          ~weatherMessage.indexOf('clear'))
-        return 'wb_sunny';
-      if (~weatherMessage.indexOf('cloud'))
-        return 'filter_drama';
-      if (~weatherMessage.indexOf('snow'))
-        return 'ac_unit';
-      if (~weatherMessage.indexOf('storm') ||
-          ~weatherMessage.indexOf('lightning') ||
-          ~weatherMessage.indexOf('thunder'))
-        return 'flash_on';
-      return null;
-    }
-
     getWeatherFromServer() {
       $.ajax({url: CONSTANTS.API_ROOT_YAHOO_WEATHER,
               success: json_weather => {
-          var todayForecast = json_weather.query.results.channel.item.forecast.shift();
+          let todayForecast = json_weather.query.results.channel.item.forecast.shift();
 
           todayForecast.text = todayForecast.text.toUpperCase().split(' ');
           this.setState({ forecastToday: todayForecast });
-console.log(this.state.forecastToday.text);
           this.setState({ forecastOtherDays: json_weather.query.results.channel.item.forecast });
           this.setState({ lastUpdated: DataService.getDateTimeNow() });
-          console.log(json_weather.query.results.channel.item.forecast);
         }
       })
     }
@@ -52,7 +33,7 @@ console.log(this.state.forecastToday.text);
     }
 
     render() {
-        var forecastOtherDaysList = this.state.forecastOtherDays.map(function(dayForecast, i) {
+        let forecastOtherDaysList = this.state.forecastOtherDays.map(function(dayForecast, i) {
             return (
                 <span key={i} className="glow mr15 fs35">
                     <div className="tac mb10"><i className={"wi wi-yahoo-" + dayForecast.code}></i></div>
@@ -60,11 +41,6 @@ console.log(this.state.forecastToday.text);
                 </span>
             );
         });
-        //var forecastTodayText = this.state.forecastToday.text.map(function(dayForecastText, i) {
-        //    return (
-        //        <div key={i}>{dayForecastText}</div>
-        //    )
-        //});
         return (
             <div>
                 <h2 className="glow mb25">

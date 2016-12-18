@@ -26,10 +26,20 @@ class NewsUnit extends React.Component {
     }
 
     render() {
-      var newsStories = this.state.newsStories.map(function(story, i) {
+      let newsStories = this.state.newsStories.map(function(story, i) {
+        let removeExcessTitle = function(str) {
+            //let splitChars = ['|', ' - '];
+            let splitChars = ['|'];
+            for (let val of splitChars) {
+                str = str.substring(story.data.title.lastIndexOf(val) + 1);
+                console.log(val);
+                console.log(str);
+            }
+            return str;
+        };
         return (
-          <li key={i} className="truncate glow fs18">
-            <a href={'https://www.reddit.com/' + story.data.permalink} target="_blank">{story.data.title}</a>
+          <li key={i} className="news-link truncate glow fs18 ml-5">
+            <a href={CONSTANTS.API_ROOT_REDDIT + story.data.permalink} target="_blank">{removeExcessTitle(story.data.title)}</a>
           </li>
         );
       });
