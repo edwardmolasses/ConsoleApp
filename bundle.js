@@ -12428,7 +12428,7 @@
 	            _react2.default.createElement(
 	              'strong',
 	              { className: stock.Change > 0 ? "stock-up glow-green" : "stock-down glow-red" },
-	              stock.Ask
+	              stock.LastTradePriceOnly
 	            )
 	          );
 	        }
