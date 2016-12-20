@@ -49,6 +49,7 @@ class TransitUnit extends React.Component {
             return a.time - b.time;
         });
         this.setState({ nextBusesArr: nextBusesSorted });
+        this.setState({ lastUpdated: DataService.getDateTimeNow() });
     }
 
     componentDidMount() {

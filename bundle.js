@@ -12576,6 +12576,7 @@
 	                return a.time - b.time;
 	            });
 	            this.setState({ nextBusesArr: nextBusesSorted });
+	            this.setState({ lastUpdated: _DataService2.default.getDateTimeNow() });
 	        }
 	    }, {
 	        key: 'componentDidMount',
