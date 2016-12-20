@@ -34,17 +34,15 @@ class TransitUnit extends React.Component {
     }
 
     getTransitFromServer() {
-        let nextNo9BusIndex = this.getNextBusIndex(CONSTANTS.BUS_SCHEDULE[9], CONSTANTS.TRAVEL_TIME_TO_NO9);
-        let nextNo17BusIndex = this.getNextBusIndex(CONSTANTS.BUS_SCHEDULE[17], CONSTANTS.TRAVEL_TIME_TO_NO17);
+        let nextNo9BusIndex = this.getNextBusIndex(CONSTANTS.BUS_SCHEDULE[9], 0);
+        let nextNo17BusIndex = this.getNextBusIndex(CONSTANTS.BUS_SCHEDULE[17], 0);
         let nextBuses = [];
-        let timeNow = moment(DataService.getTimeNow24(), this.state.timeFormat);
         let nextBusesSorted;
 
         nextBuses.push({number: 17, time: moment(CONSTANTS.BUS_SCHEDULE[17][nextNo17BusIndex], this.state.timeFormat)});
         nextBuses.push({number: 17, time: moment(CONSTANTS.BUS_SCHEDULE[17][nextNo17BusIndex + 1], this.state.timeFormat)});
         nextBuses.push({number: 9, time: moment(CONSTANTS.BUS_SCHEDULE[9][nextNo9BusIndex], this.state.timeFormat)});
         nextBuses.push({number: 9, time: moment(CONSTANTS.BUS_SCHEDULE[9][nextNo9BusIndex + 1], this.state.timeFormat)});
-
         nextBusesSorted = nextBuses.sort(function(a, b){
             return a.time - b.time;
         });

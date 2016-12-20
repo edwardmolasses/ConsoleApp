@@ -12561,17 +12561,15 @@
 	    }, {
 	        key: 'getTransitFromServer',
 	        value: function getTransitFromServer() {
-	            var nextNo9BusIndex = this.getNextBusIndex(CONSTANTS.BUS_SCHEDULE[9], CONSTANTS.TRAVEL_TIME_TO_NO9);
-	            var nextNo17BusIndex = this.getNextBusIndex(CONSTANTS.BUS_SCHEDULE[17], CONSTANTS.TRAVEL_TIME_TO_NO17);
+	            var nextNo9BusIndex = this.getNextBusIndex(CONSTANTS.BUS_SCHEDULE[9], 0);
+	            var nextNo17BusIndex = this.getNextBusIndex(CONSTANTS.BUS_SCHEDULE[17], 0);
 	            var nextBuses = [];
-	            var timeNow = (0, _moment2.default)(_DataService2.default.getTimeNow24(), this.state.timeFormat);
 	            var nextBusesSorted = void 0;
 
 	            nextBuses.push({ number: 17, time: (0, _moment2.default)(CONSTANTS.BUS_SCHEDULE[17][nextNo17BusIndex], this.state.timeFormat) });
 	            nextBuses.push({ number: 17, time: (0, _moment2.default)(CONSTANTS.BUS_SCHEDULE[17][nextNo17BusIndex + 1], this.state.timeFormat) });
 	            nextBuses.push({ number: 9, time: (0, _moment2.default)(CONSTANTS.BUS_SCHEDULE[9][nextNo9BusIndex], this.state.timeFormat) });
 	            nextBuses.push({ number: 9, time: (0, _moment2.default)(CONSTANTS.BUS_SCHEDULE[9][nextNo9BusIndex + 1], this.state.timeFormat) });
-
 	            nextBusesSorted = nextBuses.sort(function (a, b) {
 	                return a.time - b.time;
 	            });
