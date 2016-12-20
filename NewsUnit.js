@@ -32,8 +32,8 @@ class NewsUnit extends React.Component {
             let splitChars = ['|'];
             for (let val of splitChars) {
                 str = str.substring(story.data.title.lastIndexOf(val) + 1);
-                console.log(val);
-                console.log(str);
+                //console.log(val);
+                //console.log(str);
             }
             return str;
         };

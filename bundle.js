@@ -12201,9 +12201,10 @@
 
 	var TRAVEL_TIME_TO_NO9 = exports.TRAVEL_TIME_TO_NO9 = 4 * 60 * 1000; // in ms
 	var TRAVEL_TIME_TO_NO17 = exports.TRAVEL_TIME_TO_NO17 = 5 * 60 * 1000; // in ms
-	var NO9_BUS_SCHEDULE = exports.NO9_BUS_SCHEDULE = ['00:09', '00:23', '00:39', '00:53', '01:08', '01:23', '01:53', '04:45', '05:05', '05:25', '05:35', '05:45', '05:55', '06:05', '06:15', '06:25', '06:35', '06:43', '06:51', '06:55', '07:00', '07:04', '07:09', '07:13', '07:18', '07:22', '07:27', '07:31', '07:36', '07:40', '07:45', '07:51', '07:56', '08:02', '08:07', '08:13', '08:18', '08:24', '08:29', '08:35', '08:40', '08:46', '08:51', '08:57', '09:02', '09:08', '09:13', '09:19', '09:26', '09:32', '09:39', '09:45', '09:52', '09:58', '10:05', '10:11', '10:18', '10:24', '10:31', '10:37', '10:44', '10:50', '10:57', '11:03', '11:10', '11:16', '11:23', '11:29', '11:36', '11:42', '11:49', '11:55', '12:02', '12:08', '12:15', '12:21', '12:28', '12:32', '12:41', '12:47', '12:54', '13:00', '13:07', '13:13', '13:21', '13:26', '13:33', '13:39', '13:46', '13:52', '13:59', '14:05', '14:12', '14:18', '14:25', '14:31', '14:36', '14:41', '14:46', '14:51', '14:56', '15:01', '15:06', '15:11', '15:16', '15:21', '15:26', '15:31', '15:36', '15:41', '15:46', '15:51', '15:55', '15:59', '16:03', '16:07', '16:11', '16:15', '16:19', '16:23', '16:27', '16:31', '16:36', '16:41', '16:46', '16:51', '16:56', '17:01', '17:06', '17:11', '17:16', '17:21', '17:26', '17:31', '17:36', '17:41', '17:46', '17:51', '17:57', '18:04', '18:10', '18:17', '18:23', '18:30', '18:36', '18:43', '18:52', '19:02', '19:12', '19:22', '19:32', '19:42', '19:52', '20:02', '20:13', '20:23', '20:33', '20:42', '20:52', '21:02', '21:12', '21:22', '21:32', '21:43', '21:54', '22:04', '22:14', '22:24', '22:33', '22:43', '22:54', '23:09', '23:24', '23:39', '23:54'];
-
-	var NO17_BUS_SCHEDULE = exports.NO17_BUS_SCHEDULE = ['00:15', '00:45', '01:17', '05:32', '05:47', '06:02', '06:17', '06:32', '06:45', '06:55', '07:04', '07:13', '07:22', '07:31', '07:38', '07:47', '07:55', '08:03', '08:12', '08:21', '08:29', '08:37', '08:45', '08:53', '09:01', '09:09', '09:18', '09:26', '09:35', '09:44', '09:53', '10:03', '10:13', '10:25', '10:38', '10:53', '11:08', '11:23', '11:38', '11:54', '12:09', '12:24', '12:39', '12:54', '13:09', '13:24', '13:39', '13:54', '14:09', '14:24', '14:37', '14:48', '14:59', '15:10', '15:20', '15:30', '15:40', '15:48', '15:56', '16:03', '16:11', '16:19', '16:27', '16:35', '16:43', '16:51', '16:59', '17:07', '17:15', '17:22', '17:29', '17:37', '17:44', '17:52', '18:02', '18:14', '18:29', '18:44', '19:00', '19:15', '19:30', '19:45', '20:07', '20:27', '20:47', '21:07', '21:27', '21:47', '22:07', '22:27', '22:47', '23:07', '23:27', '23:45'];
+	var BUS_SCHEDULE = exports.BUS_SCHEDULE = {
+	  9: ['00:09', '00:23', '00:39', '00:53', '01:08', '01:23', '01:53', '04:45', '05:05', '05:25', '05:35', '05:45', '05:55', '06:05', '06:15', '06:25', '06:35', '06:43', '06:51', '06:55', '07:00', '07:04', '07:09', '07:13', '07:18', '07:22', '07:27', '07:31', '07:36', '07:40', '07:45', '07:51', '07:56', '08:02', '08:07', '08:13', '08:18', '08:24', '08:29', '08:35', '08:40', '08:46', '08:51', '08:57', '09:02', '09:08', '09:13', '09:19', '09:26', '09:32', '09:39', '09:45', '09:52', '09:58', '10:05', '10:11', '10:18', '10:24', '10:31', '10:37', '10:44', '10:50', '10:57', '11:03', '11:10', '11:16', '11:23', '11:29', '11:36', '11:42', '11:49', '11:55', '12:02', '12:08', '12:15', '12:21', '12:28', '12:32', '12:41', '12:47', '12:54', '13:00', '13:07', '13:13', '13:21', '13:26', '13:33', '13:39', '13:46', '13:52', '13:59', '14:05', '14:12', '14:18', '14:25', '14:31', '14:36', '14:41', '14:46', '14:51', '14:56', '15:01', '15:06', '15:11', '15:16', '15:21', '15:26', '15:31', '15:36', '15:41', '15:46', '15:51', '15:55', '15:59', '16:03', '16:07', '16:11', '16:15', '16:19', '16:23', '16:27', '16:31', '16:36', '16:41', '16:46', '16:51', '16:56', '17:01', '17:06', '17:11', '17:16', '17:21', '17:26', '17:31', '17:36', '17:41', '17:46', '17:51', '17:57', '18:04', '18:10', '18:17', '18:23', '18:30', '18:36', '18:43', '18:52', '19:02', '19:12', '19:22', '19:32', '19:42', '19:52', '20:02', '20:13', '20:23', '20:33', '20:42', '20:52', '21:02', '21:12', '21:22', '21:32', '21:43', '21:54', '22:04', '22:14', '22:24', '22:33', '22:43', '22:54', '23:09', '23:24', '23:39', '23:54'],
+	  17: ['00:15', '00:45', '01:17', '05:32', '05:47', '06:02', '06:17', '06:32', '06:45', '06:55', '07:04', '07:13', '07:22', '07:31', '07:38', '07:47', '07:55', '08:03', '08:12', '08:21', '08:29', '08:37', '08:45', '08:53', '09:01', '09:09', '09:18', '09:26', '09:35', '09:44', '09:53', '10:03', '10:13', '10:25', '10:38', '10:53', '11:08', '11:23', '11:38', '11:54', '12:09', '12:24', '12:39', '12:54', '13:09', '13:24', '13:39', '13:54', '14:09', '14:24', '14:37', '14:48', '14:59', '15:10', '15:20', '15:30', '15:40', '15:48', '15:56', '16:03', '16:11', '16:19', '16:27', '16:35', '16:43', '16:51', '16:59', '17:07', '17:15', '17:22', '17:29', '17:37', '17:44', '17:52', '18:02', '18:14', '18:29', '18:44', '19:00', '19:15', '19:30', '19:45', '20:07', '20:27', '20:47', '21:07', '21:27', '21:47', '22:07', '22:27', '22:47', '23:07', '23:27', '23:45']
+	};
 
 /***/ },
 /* 111 */
@@ -12290,8 +12291,8 @@
 	              var val = _step.value;
 
 	              str = str.substring(story.data.title.lastIndexOf(val) + 1);
-	              console.log(val);
-	              console.log(str);
+	              //console.log(val);
+	              //console.log(str);
 	            }
 	          } catch (err) {
 	            _didIteratorError = true;
@@ -12489,7 +12490,7 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	    value: true
 	});
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -12521,185 +12522,157 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var TransitUnit = function (_React$Component) {
-	  _inherits(TransitUnit, _React$Component);
+	    _inherits(TransitUnit, _React$Component);
 
-	  function TransitUnit(props) {
-	    _classCallCheck(this, TransitUnit);
+	    function TransitUnit(props) {
+	        _classCallCheck(this, TransitUnit);
 
-	    var _this = _possibleConstructorReturn(this, (TransitUnit.__proto__ || Object.getPrototypeOf(TransitUnit)).call(this, props));
+	        var _this = _possibleConstructorReturn(this, (TransitUnit.__proto__ || Object.getPrototypeOf(TransitUnit)).call(this, props));
 
-	    _this.state = {
-	      nextNo9: '',
-	      nextNo17: '',
-	      tillNextNo9: '',
-	      tillNextNo17: '',
-	      lastUpdated: '',
-	      timeFormat: 'h:mm a'
-	    };
-	    return _this;
-	  }
-
-	  _createClass(TransitUnit, [{
-	    key: 'getNextBus',
-	    value: function getNextBus(busScheduleArr, travelTimeToStop) {
-	      var timeFormat = this.state.timeFormat;
-	      var timeNow = (0, _moment2.default)(_DataService2.default.getTimeNow24(), timeFormat);
-	      var busTime = void 0;
-	      var timeDifference = void 0;
-
-	      var nextBusIndex = busScheduleArr.findIndex(function (busTime) {
-	        busTime = (0, _moment2.default)(busTime, timeFormat);
-	        timeDifference = (0, _moment2.default)(busTime, timeFormat).diff(timeNow);
-
-	        return (0, _moment2.default)(busTime).isAfter(timeNow) && timeDifference > travelTimeToStop;
-	      });
-
-	      return busScheduleArr[nextBusIndex];
+	        _this.state = {
+	            nextBusesArr: [],
+	            nextNo9: '',
+	            nextNo17: '',
+	            tillNextNo9: '',
+	            tillNextNo17: '',
+	            lastUpdated: '',
+	            timeFormat: 'h:mm a'
+	        };
+	        return _this;
 	    }
-	  }, {
-	    key: 'getTransitFromServer',
-	    value: function getTransitFromServer() {
-	      var nextNo9BusTime = (0, _moment2.default)(this.getNextBus(CONSTANTS.NO9_BUS_SCHEDULE, CONSTANTS.TRAVEL_TIME_TO_NO9), this.state.timeFormat);
-	      var nextNo17BusTime = (0, _moment2.default)(this.getNextBus(CONSTANTS.NO17_BUS_SCHEDULE, CONSTANTS.TRAVEL_TIME_TO_NO17), this.state.timeFormat);
-	      var timeNow = (0, _moment2.default)(_DataService2.default.getTimeNow24(), this.state.timeFormat);
 
-	      this.setState({ nextNo9: (0, _moment2.default)(nextNo9BusTime).format(this.state.timeFormat) });
-	      this.setState({ nextNo17: (0, _moment2.default)(nextNo17BusTime).format(this.state.timeFormat) });
-	      this.setState({ tillNextNo9: (0, _moment2.default)(nextNo9BusTime).diff(timeNow) / 1000 / 60 });
-	      this.setState({ tillNextNo17: (0, _moment2.default)(nextNo17BusTime).diff(timeNow) / 1000 / 60 });
-	      this.setState({ lastUpdated: _DataService2.default.getDateTimeNow() });
-	    }
-	  }, {
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      var _this2 = this;
+	    _createClass(TransitUnit, [{
+	        key: 'getNextBusIndex',
+	        value: function getNextBusIndex(busScheduleArr, travelTimeToStop) {
+	            var timeFormat = this.state.timeFormat;
+	            var timeNow = (0, _moment2.default)(_DataService2.default.getTimeNow24(), timeFormat);
+	            var busTime = void 0;
+	            var timeDifference = void 0;
 
-	      this.getTransitFromServer();
-	      setInterval(function () {
-	        _this2.getTransitFromServer();
-	      }, CONSTANTS.MINUTE);
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	          'h2',
-	          { className: 'glow' },
-	          _react2.default.createElement(
-	            'i',
-	            { className: 'material-icons fs30 dn4' },
-	            'directions_bus'
-	          ),
-	          ' TRANSIT',
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'h5' },
-	            'LAST UPDATED ',
-	            this.state.lastUpdated
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'flex-di flex-row flex-jl mt25' },
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'transit-number-container h70 w50 glow-box mr15 mb15' },
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'transit-number-container-label h20 glow-black' },
-	              'BUS'
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'transit-number-container-bus t25 fs30 fwb glow' },
-	              '9'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'transit-number-container h70 w170 glow-box mr15' },
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'transit-number-container-label h20 glow-black' },
-	              'NEXT @'
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'transit-number-container-bus t29 fs22 glow' },
-	              this.state.nextNo9
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'transit-number-container h70 w170 glow-box' },
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'transit-number-container-label h20 glow-black' },
-	              'IN'
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'transit-number-container-bus t29 fs22 glow' },
-	              this.state.tillNextNo9,
-	              ' mins'
-	            )
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'flex-di flex-row flex-jl' },
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'transit-number-container h70 w50 glow-box mr15' },
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'transit-number-container-label h20 glow-black' },
-	              'BUS'
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'transit-number-container-bus t25 fs30 fwb glow' },
-	              '17'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'transit-number-container h70 w170 glow-box mr15' },
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'transit-number-container-label h20 glow-black' },
-	              'NEXT @'
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'transit-number-container-bus t29 fs22 glow' },
-	              this.state.nextNo17
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'transit-number-container h70 w170 glow-box' },
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'transit-number-container-label h20 glow-black' },
-	              'IN'
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'transit-number-container-bus t29 fs22 glow' },
-	              this.state.tillNextNo17,
-	              ' mins'
-	            )
-	          )
-	        )
-	      );
-	    }
-	  }]);
+	            var nextBusIndex = busScheduleArr.findIndex(function (busTime) {
+	                busTime = (0, _moment2.default)(busTime, timeFormat);
+	                timeDifference = (0, _moment2.default)(busTime, timeFormat).diff(timeNow);
 
-	  return TransitUnit;
+	                return (0, _moment2.default)(busTime).isAfter(timeNow) && timeDifference > travelTimeToStop;
+	            });
+
+	            return nextBusIndex;
+	        }
+	    }, {
+	        key: 'getTransitFromServer',
+	        value: function getTransitFromServer() {
+	            var nextNo9BusIndex = this.getNextBusIndex(CONSTANTS.BUS_SCHEDULE[9], CONSTANTS.TRAVEL_TIME_TO_NO9);
+	            var nextNo17BusIndex = this.getNextBusIndex(CONSTANTS.BUS_SCHEDULE[17], CONSTANTS.TRAVEL_TIME_TO_NO17);
+	            var nextBuses = [];
+	            var timeNow = (0, _moment2.default)(_DataService2.default.getTimeNow24(), this.state.timeFormat);
+	            var nextBusesSorted = void 0;
+
+	            nextBuses.push({ number: 17, time: (0, _moment2.default)(CONSTANTS.BUS_SCHEDULE[17][nextNo17BusIndex], this.state.timeFormat) });
+	            nextBuses.push({ number: 17, time: (0, _moment2.default)(CONSTANTS.BUS_SCHEDULE[17][nextNo17BusIndex + 1], this.state.timeFormat) });
+	            nextBuses.push({ number: 9, time: (0, _moment2.default)(CONSTANTS.BUS_SCHEDULE[9][nextNo9BusIndex], this.state.timeFormat) });
+	            nextBuses.push({ number: 9, time: (0, _moment2.default)(CONSTANTS.BUS_SCHEDULE[9][nextNo9BusIndex + 1], this.state.timeFormat) });
+
+	            nextBusesSorted = nextBuses.sort(function (a, b) {
+	                return a.time - b.time;
+	            });
+	            this.setState({ nextBusesArr: nextBusesSorted });
+	        }
+	    }, {
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            var _this2 = this;
+
+	            this.getTransitFromServer();
+	            setInterval(function () {
+	                _this2.getTransitFromServer();
+	            }, CONSTANTS.MINUTE);
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            var self = this;
+	            var busListings = this.state.nextBusesArr.map(function (bus, i) {
+	                var timeNow = (0, _moment2.default)(_DataService2.default.getTimeNow24(), self.state.timeFormat);
+	                var nextBusTime = (0, _moment2.default)(bus.time).format(self.state.timeFormat);
+	                var timeTillNextBus = (0, _moment2.default)(bus.time).diff(timeNow) / 1000 / 60;
+
+	                return _react2.default.createElement(
+	                    'div',
+	                    { key: i, className: 'flex-di flex-row flex-jl' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'transit-number-container h70 w50 glow-box mr15 mb15' },
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'transit-number-container-label h20 glow-black' },
+	                            'BUS'
+	                        ),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'transit-number-container-bus t25 fs30 fwb glow' },
+	                            bus.number
+	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'transit-number-container h70 w170 glow-box mr15' },
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'transit-number-container-label h20 glow-black' },
+	                            'NEXT @'
+	                        ),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'transit-number-container-bus t29 fs22 glow' },
+	                            nextBusTime
+	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'transit-number-container h70 w170 glow-box' },
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'transit-number-container-label h20 glow-black' },
+	                            'IN'
+	                        ),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'transit-number-container-bus t29 fs22 glow' },
+	                            timeTillNextBus,
+	                            ' mins'
+	                        )
+	                    )
+	                );
+	            });
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(
+	                    'h2',
+	                    { className: 'glow' },
+	                    _react2.default.createElement(
+	                        'i',
+	                        { className: 'material-icons fs30 dn4' },
+	                        'directions_bus'
+	                    ),
+	                    ' TRANSIT',
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'h5' },
+	                        'LAST UPDATED ',
+	                        this.state.lastUpdated
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'mt25' },
+	                    busListings
+	                )
+	            );
+	        }
+	    }]);
+
+	    return TransitUnit;
 	}(_react2.default.Component);
 
 	exports.default = TransitUnit;

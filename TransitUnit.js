@@ -7,6 +7,7 @@ class TransitUnit extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
+        nextBusesArr: [],
         nextNo9: '',
         nextNo17: '',
         tillNextNo9: '',
@@ -16,7 +17,7 @@ class TransitUnit extends React.Component {
       };
     }
 
-    getNextBus(busScheduleArr, travelTimeToStop) {
+    getNextBusIndex(busScheduleArr, travelTimeToStop) {
       let timeFormat = this.state.timeFormat;
       let timeNow = moment(DataService.getTimeNow24(), timeFormat);
       let busTime;
@@ -29,19 +30,25 @@ class TransitUnit extends React.Component {
         return moment(busTime).isAfter(timeNow) && timeDifference > travelTimeToStop;
       });
 
-      return busScheduleArr[nextBusIndex];
+      return nextBusIndex;
     }
 
     getTransitFromServer() {
-      let nextNo9BusTime = moment(this.getNextBus(CONSTANTS.NO9_BUS_SCHEDULE, CONSTANTS.TRAVEL_TIME_TO_NO9), this.state.timeFormat);
-      let nextNo17BusTime = moment(this.getNextBus(CONSTANTS.NO17_BUS_SCHEDULE, CONSTANTS.TRAVEL_TIME_TO_NO17), this.state.timeFormat);
-      let timeNow = moment(DataService.getTimeNow24(), this.state.timeFormat);
+        let nextNo9BusIndex = this.getNextBusIndex(CONSTANTS.BUS_SCHEDULE[9], CONSTANTS.TRAVEL_TIME_TO_NO9);
+        let nextNo17BusIndex = this.getNextBusIndex(CONSTANTS.BUS_SCHEDULE[17], CONSTANTS.TRAVEL_TIME_TO_NO17);
+        let nextBuses = [];
+        let timeNow = moment(DataService.getTimeNow24(), this.state.timeFormat);
+        let nextBusesSorted;
 
-      this.setState({ nextNo9: moment(nextNo9BusTime).format(this.state.timeFormat) });
-      this.setState({ nextNo17: moment(nextNo17BusTime).format(this.state.timeFormat) });
-      this.setState({ tillNextNo9: (moment(nextNo9BusTime).diff(timeNow) / 1000) / 60 });
-      this.setState({ tillNextNo17: (moment(nextNo17BusTime).diff(timeNow) / 1000) / 60 });
-      this.setState({ lastUpdated: DataService.getDateTimeNow() });
+        nextBuses.push({number: 17, time: moment(CONSTANTS.BUS_SCHEDULE[17][nextNo17BusIndex], this.state.timeFormat)});
+        nextBuses.push({number: 17, time: moment(CONSTANTS.BUS_SCHEDULE[17][nextNo17BusIndex + 1], this.state.timeFormat)});
+        nextBuses.push({number: 9, time: moment(CONSTANTS.BUS_SCHEDULE[9][nextNo9BusIndex], this.state.timeFormat)});
+        nextBuses.push({number: 9, time: moment(CONSTANTS.BUS_SCHEDULE[9][nextNo9BusIndex + 1], this.state.timeFormat)});
+
+        nextBusesSorted = nextBuses.sort(function(a, b){
+            return a.time - b.time;
+        });
+        this.setState({ nextBusesArr: nextBusesSorted });
     }
 
     componentDidMount() {
@@ -52,42 +59,40 @@ class TransitUnit extends React.Component {
     }
 
     render() {
-      return (
-        <div>
-          <h2 className="glow">
-            <i className="material-icons fs30 dn4">directions_bus</i> TRANSIT
-            <div className="h5">LAST UPDATED {this.state.lastUpdated}</div>
-          </h2>
-          <div className="flex-di flex-row flex-jl mt25">
-            <div className="transit-number-container h70 w50 glow-box mr15 mb15">
-              <div className="transit-number-container-label h20 glow-black">BUS</div>
-              <div className="transit-number-container-bus t25 fs30 fwb glow">9</div>
+        let self = this;
+        let busListings = this.state.nextBusesArr.map(function(bus, i) {
+            let timeNow = moment(DataService.getTimeNow24(), self.state.timeFormat);
+            let nextBusTime = moment(bus.time).format(self.state.timeFormat);
+            let timeTillNextBus = (moment(bus.time).diff(timeNow) / 1000) / 60;
+
+            return (
+                <div key={i} className="flex-di flex-row flex-jl">
+                    <div className="transit-number-container h70 w50 glow-box mr15 mb15">
+                        <div className="transit-number-container-label h20 glow-black">BUS</div>
+                        <div className="transit-number-container-bus t25 fs30 fwb glow">{bus.number}</div>
+                    </div>
+                    <div className="transit-number-container h70 w170 glow-box mr15">
+                        <div className="transit-number-container-label h20 glow-black">NEXT @</div>
+                        <div className="transit-number-container-bus t29 fs22 glow">{nextBusTime}</div>
+                    </div>
+                    <div className="transit-number-container h70 w170 glow-box">
+                        <div className="transit-number-container-label h20 glow-black">IN</div>
+                        <div className="transit-number-container-bus t29 fs22 glow">{timeTillNextBus} mins</div>
+                    </div>
+                </div>
+            );
+        });
+        return (
+            <div>
+                <h2 className="glow">
+                    <i className="material-icons fs30 dn4">directions_bus</i> TRANSIT
+                    <div className="h5">LAST UPDATED {this.state.lastUpdated}</div>
+                </h2>
+                <div className="mt25">
+                    {busListings}
+                </div>
             </div>
-            <div className="transit-number-container h70 w170 glow-box mr15">
-              <div className="transit-number-container-label h20 glow-black">NEXT @</div>
-              <div className="transit-number-container-bus t29 fs22 glow">{this.state.nextNo9}</div>
-            </div>
-            <div className="transit-number-container h70 w170 glow-box">
-              <div className="transit-number-container-label h20 glow-black">IN</div>
-              <div className="transit-number-container-bus t29 fs22 glow">{this.state.tillNextNo9} mins</div>
-            </div>
-          </div>
-          <div className="flex-di flex-row flex-jl">
-            <div className="transit-number-container h70 w50 glow-box mr15">
-              <div className="transit-number-container-label h20 glow-black">BUS</div>
-              <div className="transit-number-container-bus t25 fs30 fwb glow">17</div>
-            </div>
-            <div className="transit-number-container h70 w170 glow-box mr15">
-              <div className="transit-number-container-label h20 glow-black">NEXT @</div>
-              <div className="transit-number-container-bus t29 fs22 glow">{this.state.nextNo17}</div>
-            </div>
-            <div className="transit-number-container h70 w170 glow-box">
-              <div className="transit-number-container-label h20 glow-black">IN</div>
-              <div className="transit-number-container-bus t29 fs22 glow">{this.state.tillNextNo17} mins</div>
-            </div>
-          </div>
-        </div>
-      )
+        )
     }
 }
 
