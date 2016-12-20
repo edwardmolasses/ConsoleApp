@@ -7,6 +7,8 @@ export const STOCKS = ['YHOO',
                 'TSLA',
                 'TTM',
                 'GT',
+                'WTI',
+                'ISRG',
                 'KO'];
 
 export const API_STOCKS = "http://query.yahooapis.com/v1/public/yql?q=select%20"

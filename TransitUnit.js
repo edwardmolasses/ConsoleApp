@@ -8,10 +8,6 @@ class TransitUnit extends React.Component {
       super(props);
       this.state = {
         nextBusesArr: [],
-        nextNo9: '',
-        nextNo17: '',
-        tillNextNo9: '',
-        tillNextNo17: '',
         lastUpdated: '',
         timeFormat: 'h:mm a'
       };
@@ -20,9 +16,7 @@ class TransitUnit extends React.Component {
     getNextBusIndex(busScheduleArr, travelTimeToStop) {
       let timeFormat = this.state.timeFormat;
       let timeNow = moment(DataService.getTimeNow24(), timeFormat);
-      let busTime;
       let timeDifference;
-
       let nextBusIndex = busScheduleArr.findIndex(function(busTime) {
         busTime = moment(busTime, timeFormat);
         timeDifference = moment(busTime, timeFormat).diff(timeNow);
@@ -58,10 +52,9 @@ class TransitUnit extends React.Component {
     }
 
     render() {
-        let self = this;
-        let busListings = this.state.nextBusesArr.map(function(bus, i) {
-            let timeNow = moment(DataService.getTimeNow24(), self.state.timeFormat);
-            let nextBusTime = moment(bus.time).format(self.state.timeFormat);
+        let busListings = this.state.nextBusesArr.map((bus, i) => {
+            let timeNow = moment(DataService.getTimeNow24(), this.state.timeFormat);
+            let nextBusTime = moment(bus.time).format(this.state.timeFormat);
             let timeTillNextBus = (moment(bus.time).diff(timeNow) / 1000) / 60;
 
             return (

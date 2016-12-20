@@ -12179,7 +12179,7 @@
 	  value: true
 	});
 	var API_TRANSIT_STOP17 = '59412';
-	var STOCKS = exports.STOCKS = ['YHOO', 'FB', 'NFLX', 'AMZN', 'SQ', 'TSLA', 'TTM', 'GT', 'KO'];
+	var STOCKS = exports.STOCKS = ['YHOO', 'FB', 'NFLX', 'AMZN', 'SQ', 'TSLA', 'TTM', 'GT', 'WTI', 'ISRG', 'KO'];
 
 	var API_STOCKS = exports.API_STOCKS = "http://query.yahooapis.com/v1/public/yql?q=select%20" + "*%20from%20yahoo.finance.quotes%20where%20symbol%20IN%20(" + STOCKS.map(function (symbol) {
 	  return '%22' + symbol + '%22';
@@ -12531,10 +12531,6 @@
 
 	        _this.state = {
 	            nextBusesArr: [],
-	            nextNo9: '',
-	            nextNo17: '',
-	            tillNextNo9: '',
-	            tillNextNo17: '',
 	            lastUpdated: '',
 	            timeFormat: 'h:mm a'
 	        };
@@ -12546,9 +12542,7 @@
 	        value: function getNextBusIndex(busScheduleArr, travelTimeToStop) {
 	            var timeFormat = this.state.timeFormat;
 	            var timeNow = (0, _moment2.default)(_DataService2.default.getTimeNow24(), timeFormat);
-	            var busTime = void 0;
 	            var timeDifference = void 0;
-
 	            var nextBusIndex = busScheduleArr.findIndex(function (busTime) {
 	                busTime = (0, _moment2.default)(busTime, timeFormat);
 	                timeDifference = (0, _moment2.default)(busTime, timeFormat).diff(timeNow);
@@ -12589,10 +12583,11 @@
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            var self = this;
+	            var _this3 = this;
+
 	            var busListings = this.state.nextBusesArr.map(function (bus, i) {
-	                var timeNow = (0, _moment2.default)(_DataService2.default.getTimeNow24(), self.state.timeFormat);
-	                var nextBusTime = (0, _moment2.default)(bus.time).format(self.state.timeFormat);
+	                var timeNow = (0, _moment2.default)(_DataService2.default.getTimeNow24(), _this3.state.timeFormat);
+	                var nextBusTime = (0, _moment2.default)(bus.time).format(_this3.state.timeFormat);
 	                var timeTillNextBus = (0, _moment2.default)(bus.time).diff(timeNow) / 1000 / 60;
 
 	                return _react2.default.createElement(
