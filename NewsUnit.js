@@ -1,5 +1,6 @@
 import React from 'react';
 import DataService from './DataService';
+import Common from './Common';
 import * as CONSTANTS from './constants';
 
 class NewsUnit extends React.Component {
@@ -29,13 +30,13 @@ class NewsUnit extends React.Component {
       let newsStories = this.state.newsStories.map(function(story, i) {
         let removeExcessTitle = function(str) {
             //let splitChars = ['|', ' - '];
-            let splitChars = ['|'];
-            for (let val of splitChars) {
-                str = str.substring(story.data.title.lastIndexOf(val) + 1);
-                //console.log(val);
-                //console.log(str);
-            }
-            return str;
+            //let splitChars = ['|'];
+            //for (let val of splitChars) {
+            //    str = str.substring(story.data.title.lastIndexOf(val) + 1);
+            //    console.log(val);
+            //    console.log(str);
+            //}
+            return Common.decodeHtml(str);
         };
         return (
           <li key={i} className="news-link truncate glow fs18 ml-5">

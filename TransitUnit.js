@@ -5,16 +5,17 @@ import moment from 'moment';
 
 class TransitUnit extends React.Component {
     constructor(props) {
-      super(props);
-      this.state = {
-        nextBusesArr: [],
-        lastUpdated: '',
-        timeFormat: 'h:mm a'
-      };
+        super(props);
+
+        this.state = {
+            nextBusesArr: [],
+            lastUpdated: ''
+        };
+        this.timeFormat = 'h:mm a';
     }
 
     getNextBusIndex(busScheduleArr, travelTimeToStop) {
-      let timeFormat = this.state.timeFormat;
+      let timeFormat = this.timeFormat;
       let timeNow = moment(DataService.getTimeNow24(), timeFormat);
       let timeDifference;
       let nextBusIndex = busScheduleArr.findIndex(function(busTime) {
@@ -28,15 +29,15 @@ class TransitUnit extends React.Component {
     }
 
     getTransitFromServer() {
-        let nextNo9BusIndex = this.getNextBusIndex(CONSTANTS.BUS_SCHEDULE[9], 0);
-        let nextNo17BusIndex = this.getNextBusIndex(CONSTANTS.BUS_SCHEDULE[17], 0);
+        let nextNo9BusIndex = this.getNextBusIndex(CONSTANTS.BUS_SCHEDULE[9], CONSTANTS.TRAVEL_TIME_TO_NO9);
+        let nextNo17BusIndex = this.getNextBusIndex(CONSTANTS.BUS_SCHEDULE[17], CONSTANTS.TRAVEL_TIME_TO_NO17);
         let nextBuses = [];
         let nextBusesSorted;
 
-        nextBuses.push({number: 17, time: moment(CONSTANTS.BUS_SCHEDULE[17][nextNo17BusIndex], this.state.timeFormat)});
-        nextBuses.push({number: 17, time: moment(CONSTANTS.BUS_SCHEDULE[17][nextNo17BusIndex + 1], this.state.timeFormat)});
-        nextBuses.push({number: 9, time: moment(CONSTANTS.BUS_SCHEDULE[9][nextNo9BusIndex], this.state.timeFormat)});
-        nextBuses.push({number: 9, time: moment(CONSTANTS.BUS_SCHEDULE[9][nextNo9BusIndex + 1], this.state.timeFormat)});
+        nextBuses.push({number: 17, time: moment(CONSTANTS.BUS_SCHEDULE[17][nextNo17BusIndex], this.timeFormat)});
+        nextBuses.push({number: 17, time: moment(CONSTANTS.BUS_SCHEDULE[17][nextNo17BusIndex + 1], this.timeFormat)});
+        nextBuses.push({number: 9, time: moment(CONSTANTS.BUS_SCHEDULE[9][nextNo9BusIndex], this.timeFormat)});
+        nextBuses.push({number: 9, time: moment(CONSTANTS.BUS_SCHEDULE[9][nextNo9BusIndex + 1], this.timeFormat)});
         nextBusesSorted = nextBuses.sort(function(a, b){
             return a.time - b.time;
         });
@@ -53,23 +54,23 @@ class TransitUnit extends React.Component {
 
     render() {
         let busListings = this.state.nextBusesArr.map((bus, i) => {
-            let timeNow = moment(DataService.getTimeNow24(), this.state.timeFormat);
-            let nextBusTime = moment(bus.time).format(this.state.timeFormat);
+            let timeNow = moment(DataService.getTimeNow24(), this.timeFormat);
+            let nextBusTime = moment(bus.time).format(this.timeFormat);
             let timeTillNextBus = (moment(bus.time).diff(timeNow) / 1000) / 60;
 
             return (
                 <div key={i} className="flex-di flex-row flex-jl">
-                    <div className="transit-number-container h70 w50 glow-box mr15 mb15">
-                        <div className="transit-number-container-label h20 glow-black">BUS</div>
-                        <div className="transit-number-container-bus t25 fs30 fwb glow">{bus.number}</div>
+                    <div className="labeled-container h70 w50 glow-box mr15 mb15">
+                        <div className="labeled-container-label h20 glow-black">BUS</div>
+                        <div className="labeled-container-content t25 fs30 fwb glow">{bus.number}</div>
                     </div>
-                    <div className="transit-number-container h70 w170 glow-box mr15">
-                        <div className="transit-number-container-label h20 glow-black">NEXT @</div>
-                        <div className="transit-number-container-bus t29 fs22 glow">{nextBusTime}</div>
+                    <div className="labeled-container h70 w170 glow-box mr15">
+                        <div className="labeled-container-label h20 glow-black">NEXT @</div>
+                        <div className="labeled-container-content t29 fs22 glow">{nextBusTime}</div>
                     </div>
-                    <div className="transit-number-container h70 w170 glow-box">
-                        <div className="transit-number-container-label h20 glow-black">IN</div>
-                        <div className="transit-number-container-bus t29 fs22 glow">{timeTillNextBus} mins</div>
+                    <div className="labeled-container h70 w170 glow-box">
+                        <div className="labeled-container-label h20 glow-black">IN</div>
+                        <div className="labeled-container-content t29 fs22 glow">{timeTillNextBus} mins</div>
                     </div>
                 </div>
             );

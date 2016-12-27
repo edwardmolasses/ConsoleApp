@@ -9,6 +9,7 @@ export const STOCKS = ['YHOO',
                 'GT',
                 'WTI',
                 'ISRG',
+                'IRBT',
                 'KO'];
 
 export const API_STOCKS = "http://query.yahooapis.com/v1/public/yql?q=select%20"
@@ -19,6 +20,7 @@ export const API_STOCKS = "http://query.yahooapis.com/v1/public/yql?q=select%20"
 export const API_TRANSIT_KEY = "oT7nF3oh4EUVqrLkjUuB";
 export let API_TRANSIT_URI = "http://api.translink.ca/rttiapi/v1/stops/%s/estimates?apikey=" + API_TRANSIT_KEY;
 export const API_TRANSIT_STOP17_URI = API_TRANSIT_URI.replace('%s', API_TRANSIT_STOP17);
+export const API_PWNED_URI = 'https://haveibeenpwned.com/api/v2/breachedaccount';
 export const API_NEWS = "https://www.reddit.com/r/worldnews/top.json?sort=top&t=day";
 export const API_ROOT_REDDIT = "https://www.reddit.com/";
 export const API_ROOT_WEATHER = "http://api.openweathermap.org/data/2.5";
@@ -32,8 +34,8 @@ export const API_CITY_ID = "6173331";
 export const MINUTE = 60 * 1000;
 export const HOUR = 60 * MINUTE;
 
-export const TRAVEL_TIME_TO_NO9 = 4 * 60 * 1000;// in ms
-export const TRAVEL_TIME_TO_NO17 = 5 * 60 * 1000;// in ms
+export const TRAVEL_TIME_TO_NO9 = 3 * 60 * 1000;// in ms
+export const TRAVEL_TIME_TO_NO17 = 3 * 60 * 1000;// in ms
 export const BUS_SCHEDULE = {
   9: [
     '00:09',

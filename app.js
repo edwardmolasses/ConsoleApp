@@ -4,6 +4,7 @@ import WeatherUnit from './WeatherUnit';
 import NewsUnit from './NewsUnit';
 import MarketUnit from './MarketUnit';
 import TransitUnit from './TransitUnit';
+import PwnedUnit from './PwnedUnit';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -26,6 +27,8 @@ class ConsoleApp extends React.Component {
           <div className="mr90"></div>
           <WeatherUnit />
         </div>
+        <br />
+        <PwnedUnit />
       </div>
     )
   }
