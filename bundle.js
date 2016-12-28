@@ -12569,6 +12569,11 @@
 	    }
 
 	    _createClass(TransitUnit, [{
+	        key: 'getBusSchedule',
+	        value: function getBusSchedule() {
+	            return CONSTANTS.BUS_SCHEDULE;
+	        }
+	    }, {
 	        key: 'getNextBusIndex',
 	        value: function getNextBusIndex(busScheduleArr, travelTimeToStop) {
 	            var timeFormat = this.timeFormat;
@@ -12588,17 +12593,17 @@
 	            var _this2 = this;
 
 	            var nextBuses = [];
-	            var nextBusIndices = [];
+	            var nextBusArrIndices = [];
 	            var busTimesArr = [];
 	            var nextBusesSorted = void 0;
 
-	            CONSTANTS.BUS_SCHEDULE.map(function (val) {
-	                nextBusIndices[Object.keys(val)] = _this2.getNextBusIndex(val[Object.keys(val)], CONSTANTS.TRAVEL_TIME_TO_BUS);
+	            this.getBusSchedule().map(function (val) {
+	                nextBusArrIndices[Object.keys(val)] = _this2.getNextBusIndex(val[Object.keys(val)], CONSTANTS.TRAVEL_TIME_TO_BUS);
 	            });
-	            CONSTANTS.BUS_SCHEDULE.map(function (val) {
+	            this.getBusSchedule().map(function (val) {
 	                busTimesArr = val[Object.keys(val)];
-	                nextBuses.push({ number: Object.keys(val), time: (0, _moment2.default)(busTimesArr[nextBusIndices[Object.keys(val)]], _this2.timeFormat) });
-	                nextBuses.push({ number: Object.keys(val), time: (0, _moment2.default)(busTimesArr[nextBusIndices[Object.keys(val)] + 1], _this2.timeFormat) });
+	                nextBuses.push({ number: Object.keys(val), time: (0, _moment2.default)(busTimesArr[nextBusArrIndices[Object.keys(val)]], _this2.timeFormat) });
+	                nextBuses.push({ number: Object.keys(val), time: (0, _moment2.default)(busTimesArr[nextBusArrIndices[Object.keys(val)] + 1], _this2.timeFormat) });
 	            });
 	            nextBusesSorted = nextBuses.sort(function (a, b) {
 	                return a.time - b.time;

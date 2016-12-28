@@ -14,6 +14,10 @@ class TransitUnit extends React.Component {
         this.timeFormat = CONSTANTS.TIME_FORMAT;
     }
 
+    getBusSchedule() {
+        return CONSTANTS.BUS_SCHEDULE;
+    }
+
     getNextBusIndex(busScheduleArr, travelTimeToStop) {
         let timeFormat = this.timeFormat;
         let timeNow = moment(DataService.getTimeNow24(), timeFormat);
@@ -29,17 +33,17 @@ class TransitUnit extends React.Component {
 
     getTransitFromServer() {
         let nextBuses = [];
-        let nextBusIndices = [];
+        let nextBusArrIndices = [];
         let busTimesArr = [];
         let nextBusesSorted;
 
-        CONSTANTS.BUS_SCHEDULE.map((val) => {
-            nextBusIndices[Object.keys(val)] = this.getNextBusIndex(val[Object.keys(val)], CONSTANTS.TRAVEL_TIME_TO_BUS);
+        this.getBusSchedule().map((val) => {
+            nextBusArrIndices[Object.keys(val)] = this.getNextBusIndex(val[Object.keys(val)], CONSTANTS.TRAVEL_TIME_TO_BUS);
         });
-        CONSTANTS.BUS_SCHEDULE.map((val) => {
+        this.getBusSchedule().map((val) => {
             busTimesArr = val[Object.keys(val)];
-            nextBuses.push({number: Object.keys(val), time: moment(busTimesArr[nextBusIndices[Object.keys(val)]], this.timeFormat)});
-            nextBuses.push({number: Object.keys(val), time: moment(busTimesArr[nextBusIndices[Object.keys(val)] + 1], this.timeFormat)});
+            nextBuses.push({number: Object.keys(val), time: moment(busTimesArr[nextBusArrIndices[Object.keys(val)]], this.timeFormat)});
+            nextBuses.push({number: Object.keys(val), time: moment(busTimesArr[nextBusArrIndices[Object.keys(val)] + 1], this.timeFormat)});
         });
         nextBusesSorted = nextBuses.sort(function(a, b){
             return a.time - b.time;
