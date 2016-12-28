@@ -11,8 +11,8 @@ class PwnedUnit extends React.Component {
             pwnedList: [],
             lastUpdated: ''
         };
-        this.timeFormat = 'h:mm a';
-        this.account = 'alachkovics@gmail.com';
+        this.timeFormat = CONSTANTS.TIME_FORMAT;
+        this.account = CONSTANTS.EMAIL;
     }
 
     getPwnedFromServer() {
@@ -39,6 +39,7 @@ class PwnedUnit extends React.Component {
                 </h4>
             );
         });
+
         return (
             <div>
                 <h2 className="mb25 glow-red">

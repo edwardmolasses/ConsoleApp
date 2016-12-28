@@ -1,5 +1,5 @@
 class Common {
-  static contain(str, search) {
+  static contains(str, search) {
     return ~str.indexOf('search');
   }
 

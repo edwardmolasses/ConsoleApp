@@ -29,9 +29,9 @@ class MarketUnit extends React.Component {
       var stocksData = this.state.stocksData.map(function(stock, i) {
         if (stock.symbol) {
           return (
-            <h4 key={i}>
-                <span className="glow">{stock.symbol}</span>
-                <span><i className="material-icons fs14 glow">play_arrow</i> <strong className={stock.Change > 0 ? "stock-up glow-green" : "stock-down glow-red"}>{stock.LastTradePriceOnly}</strong></span>
+            <h4 key={i} className="flex-di flex-row flex-jsp">
+                <span className="glow">{stock.symbol}<i className="material-icons fs14 glow">play_arrow</i></span>
+                <span><strong className={stock.Change > 0 ? "stock-up glow-green" : "stock-down glow-red"}>{stock.LastTradePriceOnly}</strong></span>
             </h4>
           );
         }

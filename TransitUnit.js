@@ -11,33 +11,36 @@ class TransitUnit extends React.Component {
             nextBusesArr: [],
             lastUpdated: ''
         };
-        this.timeFormat = 'h:mm a';
+        this.timeFormat = CONSTANTS.TIME_FORMAT;
     }
 
     getNextBusIndex(busScheduleArr, travelTimeToStop) {
-      let timeFormat = this.timeFormat;
-      let timeNow = moment(DataService.getTimeNow24(), timeFormat);
-      let timeDifference;
-      let nextBusIndex = busScheduleArr.findIndex(function(busTime) {
-        busTime = moment(busTime, timeFormat);
-        timeDifference = moment(busTime, timeFormat).diff(timeNow);
+        let timeFormat = this.timeFormat;
+        let timeNow = moment(DataService.getTimeNow24(), timeFormat);
+        let timeDifference;
+        let nextBusIndex = busScheduleArr.findIndex(function(busTime) {
+            busTime = moment(busTime, timeFormat);
+            timeDifference = moment(busTime, timeFormat).diff(timeNow);
+            return moment(busTime).isAfter(timeNow) && timeDifference > travelTimeToStop;
+        });
 
-        return moment(busTime).isAfter(timeNow) && timeDifference > travelTimeToStop;
-      });
-
-      return nextBusIndex;
+        return nextBusIndex;
     }
 
     getTransitFromServer() {
-        let nextNo9BusIndex = this.getNextBusIndex(CONSTANTS.BUS_SCHEDULE[9], CONSTANTS.TRAVEL_TIME_TO_NO9);
-        let nextNo17BusIndex = this.getNextBusIndex(CONSTANTS.BUS_SCHEDULE[17], CONSTANTS.TRAVEL_TIME_TO_NO17);
         let nextBuses = [];
+        let nextBusIndices = [];
+        let busTimesArr = [];
         let nextBusesSorted;
 
-        nextBuses.push({number: 17, time: moment(CONSTANTS.BUS_SCHEDULE[17][nextNo17BusIndex], this.timeFormat)});
-        nextBuses.push({number: 17, time: moment(CONSTANTS.BUS_SCHEDULE[17][nextNo17BusIndex + 1], this.timeFormat)});
-        nextBuses.push({number: 9, time: moment(CONSTANTS.BUS_SCHEDULE[9][nextNo9BusIndex], this.timeFormat)});
-        nextBuses.push({number: 9, time: moment(CONSTANTS.BUS_SCHEDULE[9][nextNo9BusIndex + 1], this.timeFormat)});
+        CONSTANTS.BUS_SCHEDULE.map((val) => {
+            nextBusIndices[Object.keys(val)] = this.getNextBusIndex(val[Object.keys(val)], CONSTANTS.TRAVEL_TIME_TO_BUS);
+        });
+        CONSTANTS.BUS_SCHEDULE.map((val) => {
+            busTimesArr = val[Object.keys(val)];
+            nextBuses.push({number: Object.keys(val), time: moment(busTimesArr[nextBusIndices[Object.keys(val)]], this.timeFormat)});
+            nextBuses.push({number: Object.keys(val), time: moment(busTimesArr[nextBusIndices[Object.keys(val)] + 1], this.timeFormat)});
+        });
         nextBusesSorted = nextBuses.sort(function(a, b){
             return a.time - b.time;
         });
@@ -46,10 +49,10 @@ class TransitUnit extends React.Component {
     }
 
     componentDidMount() {
-      this.getTransitFromServer();
-      setInterval(() => {
         this.getTransitFromServer();
-      }, CONSTANTS.MINUTE);
+        setInterval(() => {
+            this.getTransitFromServer();
+        }, CONSTANTS.MINUTE);
     }
 
     render() {
